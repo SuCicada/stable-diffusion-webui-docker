@@ -11,6 +11,8 @@ jobs:
   docker:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v3
 #      - name: Clear Space
 #        run: |
 #          rm -rf /usr/share/dotnet
