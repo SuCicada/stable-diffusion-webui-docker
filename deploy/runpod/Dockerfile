@@ -56,9 +56,11 @@ FROM runpod/pytorch:3.10-2.0.1-117-devel
 #
 ## Add src files (Worker Template)
 #ADD src .
-COPY init.sh /init.sh
-RUN bash /init.sh
+COPY install.sh /install.sh
+RUN bash /install.sh
 
 
 #ENV RUNPOD_DEBUG_LEVEL=INFO
 #CMD python -u /rp_handler.py --model_tag="$MODEL_TAG"
+CMD cd /workspace/stable-diffusion-webui && \
+    make download

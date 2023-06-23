@@ -1,21 +1,23 @@
 name: Docker Image
 
+
 on:
-  push:
-    branches:
-      - "release"
+  release:
+    types:
+      - published
+
 
 jobs:
   docker:
     runs-on: ubuntu-latest
     steps:
-      - name: Clear Space
-        run: |
-          rm -rf /usr/share/dotnet
-          rm -rf /opt/ghc
-          rm -rf "/usr/local/share/boost"
-          rm -rf "$AGENT_TOOLSDIRECTORY"
-
+#      - name: Clear Space
+#        run: |
+#          rm -rf /usr/share/dotnet
+#          rm -rf /opt/ghc
+#          rm -rf "/usr/local/share/boost"
+#          rm -rf "$AGENT_TOOLSDIRECTORY"
+#
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
 
@@ -28,11 +30,12 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Build and push
+      - name: Build and push runpod docker
         uses: docker/build-push-action@v4
         with:
 #          build-args: |
 #            MODEL_URL=${{ matrix.model_url }}
 #            MODEL_TAG=${{ matrix.model_tag }}
+          file: deploy/runpod/Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_REPO }}/${{ secrets.DOCKERHUB_IMG }}:latest
+          tags: ${{ secrets.DOCKERHUB_REPO }}/test:latest
