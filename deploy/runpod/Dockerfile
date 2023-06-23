@@ -56,7 +56,7 @@ FROM runpod/pytorch:3.10-2.0.1-117-devel
 #
 ## Add src files (Worker Template)
 #ADD src .
-COPY install.sh /init.sh
+COPY ./install.sh /init.sh
 RUN bash /init.sh
 
 

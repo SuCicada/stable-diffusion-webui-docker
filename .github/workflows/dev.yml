@@ -41,6 +41,7 @@ jobs:
 #          build-args: |
 #            MODEL_URL=${{ matrix.model_url }}
 #            MODEL_TAG=${{ matrix.model_tag }}
+          context: deploy/runpod/
           file: deploy/runpod/Dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_REPO }}/test:latest
