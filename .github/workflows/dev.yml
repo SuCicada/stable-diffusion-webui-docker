@@ -44,4 +44,5 @@ jobs:
           context: deploy/runpod/
           file: deploy/runpod/Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_REPO }}/test:latest
+          tags: ${{ secrets.DOCKERHUB_REPO }}/${{ secrets.DOCKERHUB_IMG }}:${{ github.event.release.tag_name }}
+
