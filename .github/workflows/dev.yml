@@ -44,5 +44,5 @@ jobs:
           context: deploy/runpod/
           file: deploy/runpod/Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_REPO }}/${{ secrets.DOCKERHUB_IMG }}:su-1.3.2
+          tags: ${{ secrets.DOCKERHUB_REPO }}/${{ secrets.DOCKERHUB_IMG }}:test
 
